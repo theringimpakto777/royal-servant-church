@@ -1,0 +1,285 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body{
+    font-family: sans-serif;
+    background-color: #000000;
+    color: #f0f0f0;
+}
+/* ===== Header Styles ===== */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1em;
+}
+.brand {
+    display: inline-grid;
+    align-items: baseline;
+    gap: 0.3rem;
+}
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: gold;
+    letter-spacing: 0.05em;
+
+}
+.tagline {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: white;
+    margin: 0 0 0 300px;
+}
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    color: gold;
+}
+.main-nav a {
+    text-decoration: none;
+    color: inherit;
+}
+/* ===== hero Styles ===== */
+.hero {
+    position: relative;
+    min-height: 60vh;          /* was 90vh — this was pushing everything down */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color:#000;
+    overflow: hidden;
+    padding: 2rem;
+    border: 1px solid #f4c430;    /* the container outline from your sketch */
+    margin: 1rem;                 /* small gap so it doesn't touch the header */
+    max-width: 1200px;      /* controls how wide the hero box is */
+    margin: 1rem auto;      /* auto = centers it horizontally */
+
+  background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/crowd-hero1.jpg');
+  background-size: cover;
+  background-position: center;
+  animation: heroSlideshow 25s infinite;
+}
+@keyframes heroSlideshow {
+  20%, 36% {
+    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/crowd-hero2.jpg');
+  }
+  40%, 56% {
+    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/crowd-hero3.jpg');
+  }
+  60%, 76% {
+    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/crowd-hero4.jpg');
+  }
+  80%, 96% {
+    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/crowd-hero5.jpg');
+  }
+  100% {
+    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/crowd-hero6.jpg');
+  }
+}
+.hero-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(244,196,48,0.55) 0%, rgba(244,196,48,0.15) 40%, transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    filter: blur(10px);
+}
+.hero-eyebrow {
+    color: #f4c430;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+} 
+.hero-slogan {
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+} 
+.hero-sub {
+  color: #ccc;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
+} 
+.hero h2,
+.hero p { 
+  position: relative;
+  z-index: 1;
+}
+.hero p {
+  font-size: 1.1rem;
+  color: #f4c430;
+  margin-bottom: 2rem;
+}
+/* ===== Select Nav (Music/Photos/Resources/Events) ===== */
+.select-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;  /* spreads them edge to edge */
+  gap: 8.2rem;
+  padding: 3rem 1rem;
+  margin: 0 1rem;                   /* lines up with .hero's margin: 1rem */
+  flex-wrap: wrap;
+}
+
+.select-nav li {
+  border: 1px solid #333;        /* subtle box, not a button look */
+  border-radius: 8px;
+  padding: 1.5rem;
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+  background: rgba(244,196,48,0.03);
+}
+
+.nav-btn {
+  display: inline-block;
+  border: 2px solid #f4c430;
+  border-radius: 50px;           /* pill button shape */
+  padding: 0.5rem 1.5rem;
+  font-weight: 800;
+  color: #f4c430;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #f4c430;
+  color: #000;
+}
+
+.select-nav strong {
+  display: block;
+  color: #fff;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.select-nav p {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+/* ===== light-section Styles ===== */
+.light-section {
+  background-color: #ffffff;
+  color: #111;
+  padding: 3rem 2rem;
+}
+
+.light-section h2 {
+  color: #000;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.light-section p {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.light-section section {
+  margin-bottom: 3rem;
+}
+.light-section a {
+  color: #f4c430;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.light-section a:hover {
+  text-decoration: underline;
+}
+.light-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.light-section ul li::before {
+  content: "— ";
+  color: #f4c430;
+  font-weight: 700;
+}
+/* ===== Give Button Styles ===== */
+.give-btn {
+  display: inline-block;
+  border: 2px solid #f4c430;
+  border-radius: 50px;
+  padding: 0.6rem 2rem;
+  font-weight: 800;
+  color: #f4c430;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.give-btn:hover {
+  background: #f4c430;
+  color: #000;
+}
+/* ===== Content Block Styles ===== */
+.content-block {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 5rem 1rem;
+}
+
+.content-block section {
+  margin-bottom: 3rem;
+}
+
+.content-block section:last-child {
+  margin-bottom: 0;
+}
+/* ===== Footer Styles ===== */
+.site-footer {
+  background-color: #000;
+  text-align: center;
+  padding: 2rem 1rem;
+  border-top: 1px solid #f4c430;
+}
+
+.footer-name {
+  color: #f4c430;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+}
+
+.footer-tagline {
+  color: #ccc;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.footer-copy {
+  color: #666;
+  font-size: 0.75rem;
+}
