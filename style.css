@@ -298,6 +298,7 @@ body{
     min-height: 50vh;
     padding: 1.5rem 1rem;
     margin: 0.5rem;
+    background-position: center 70%;   /* ADD THIS LINE HIGHER SHOWS MORE BOTTOM LOWER SHOWS MORE TOP */
   }
   .hero-glow {
     width: 280px;
