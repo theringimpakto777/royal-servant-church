@@ -66,20 +66,71 @@ body{
     margin: 1rem;                 /* small gap so it doesn't touch the header */
     max-width: 1200px;      /* controls how wide the hero box is */
     margin: 1rem auto;      /* auto = centers it horizontally */
-
-  background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/crowd-hero1.jpg');
-  background-size: cover;
-  background-position: center;
-  animation: heroSlideshow 30s infinite linear;
 }
-@keyframes heroSlideshow {
-  0%   { background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/crowd-hero1.jpg'); }
-  16.66% { background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/crowd-hero2.jpg'); }
-  33.33% { background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/crowd-hero3.jpg'); }
-  50%  { background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/crowd-hero4.jpg'); }
-  66.66% { background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/crowd-hero5.jpg'); }
-  83.33% { background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/crowd-hero6.jpg'); }
-  100% { background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/crowd-hero1.jpg'); }
+/* ===== Hero Swipe Slideshow (CSS-only, no extra HTML needed) ===== */
+
+/* These two pseudo-elements act like two invisible "layers" stacked on the hero.
+   ::before = the layer sliding OUT to the left
+   ::after  = the layer sliding IN from the right */
+.hero::before,
+.hero::after {
+  content: "";                  /* required for pseudo-elements to render at all */
+  position: absolute;           /* sits on top of the hero, doesn't affect layout */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;       /* photo fills the box without stretching */
+  background-position: center;
+  z-index: 0;                   /* stays behind the glow/text */
+}
+
+/* The "outgoing" layer - starts fully visible (0%), then swipes off-screen left */
+.hero::before {
+  animation: swipeOutLeft 30s linear infinite;
+}
+
+/* The "incoming" layer - starts off-screen right, then swipes into view */
+.hero::after {
+  animation: swipeInRight 30s linear infinite;
+}
+
+/* ===== Timeline for the OUTGOING layer =====
+   Percentages = position in the 30-second loop.
+   Each photo "holds still" for a while, then swipes left when it's time to change. */
+@keyframes swipeOutLeft {
+  0%, 14%   { transform: translateX(0%);    background-image: url('images/crowd-hero1.jpg'); }  /* hero1 sits still */
+  16%       { transform: translateX(-100%); background-image: url('images/crowd-hero1.jpg'); }  /* hero1 swipes away left */
+  16.01%    { transform: translateX(0%);    background-image: url('images/crowd-hero3.jpg'); }  /* jump to hero3, ready for its turn */
+  30%, 47%  { transform: translateX(0%);    background-image: url('images/crowd-hero3.jpg'); }  /* hero3 sits still */
+  50%       { transform: translateX(-100%); background-image: url('images/crowd-hero3.jpg'); }  /* hero3 swipes away left */
+  50.01%    { transform: translateX(0%);    background-image: url('images/crowd-hero5.jpg'); }  /* jump to hero5 */
+  64%, 81%  { transform: translateX(0%);    background-image: url('images/crowd-hero5.jpg'); }  /* hero5 sits still */
+  84%       { transform: translateX(-100%); background-image: url('images/crowd-hero5.jpg'); }  /* hero5 swipes away left */
+  100%      { transform: translateX(-100%); background-image: url('images/crowd-hero5.jpg'); }  /* stays gone until loop restarts */
+}
+
+/* ===== Timeline for the INCOMING layer =====
+   This one enters from the right (100%) right as the outgoing layer leaves,
+   so it LOOKS like one continuous swipe instead of two separate animations. */
+@keyframes swipeInRight {
+  0%, 14%   { transform: translateX(100%);  background-image: url('images/crowd-hero2.jpg'); }  /* hero2 waits off-screen right */
+  16%       { transform: translateX(0%);    background-image: url('images/crowd-hero2.jpg'); }  /* hero2 swipes into view */
+  30%, 47%  { transform: translateX(0%);    background-image: url('images/crowd-hero2.jpg'); }  /* hero2 sits still */
+  48%       { transform: translateX(100%);  background-image: url('images/crowd-hero4.jpg'); }  /* jump hero4 off-screen right */
+  50%       { transform: translateX(0%);    background-image: url('images/crowd-hero4.jpg'); }  /* hero4 swipes into view */
+  64%, 81%  { transform: translateX(0%);    background-image: url('images/crowd-hero4.jpg'); }  /* hero4 sits still */
+  82%       { transform: translateX(100%);  background-image: url('images/crowd-hero6.jpg'); }  /* jump hero6 off-screen right */
+  84%       { transform: translateX(0%);    background-image: url('images/crowd-hero6.jpg'); }  /* hero6 swipes into view */
+  100%      { transform: translateX(0%);    background-image: url('images/crowd-hero6.jpg'); }  /* stays until loop restarts */
+}
+
+/* Dark tint over the whole slideshow so white/gold text stays readable */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 1;
 }
 .hero-glow {
     position: absolute;
@@ -90,7 +141,7 @@ body{
     height: 500px;
     background: radial-gradient(circle, rgba(244,196,48,0.55) 0%, rgba(244,196,48,0.15) 40%, transparent 70%);
     transform: translate(-50%, -50%);
-    z-index: 0;
+    z-index: 2;
     filter: blur(10px);
 }
 .hero-eyebrow {
@@ -100,7 +151,7 @@ body{
     font-weight: 700;
     margin-bottom: 1rem;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 } 
 .hero-slogan {
   color: #fff;
@@ -110,14 +161,14 @@ body{
   letter-spacing: 0.01em;
   margin-bottom: 1rem;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 } 
 .hero-sub {
   color: #ccc;
   font-size: 1.1rem;
   letter-spacing: 0.05em;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 } 
 .hero h2,
 .hero p { 
