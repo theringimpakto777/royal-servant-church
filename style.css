@@ -424,3 +424,13 @@ body{
    min-height: 30vh;  
    margin-top: 100px;
 }
+#welcome p {
+  max-width: 65ch;             /* Limits line width to ~65 characters (ideal for reading) */
+  margin-inline: auto;         /* Centers the paragraphs horizontally */
+  margin-block-end: 1.25rem;   /* Adds a gap between the two paragraphs */
+  line-height: 1.6;            /* Increases line spacing for better readability */
+}
+
+#welcome p:last-child {
+  margin-block-end: 0;         /* Cleans up bottom space */
+}
