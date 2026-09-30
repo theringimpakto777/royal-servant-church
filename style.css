@@ -73,9 +73,7 @@ main {
     padding: 2rem;
     border: 1px solid #f4c430;    /* the container outline from your sketch */
     margin: 1rem;                 /* small gap so it doesn't touch the header */
-    max-width: 1200px;      /* controls how wide the hero box is */
-    margin: 1rem auto;      /* auto = centers it horizontally */
-}
+   
 /* ===== Hero Swipe Slideshow (CSS-only, no extra HTML needed) ===== */
 /* ===== Hero Swipe Slideshow (CSS-only, no extra HTML needed) ===== */
 
