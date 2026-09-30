@@ -398,6 +398,10 @@ body{
   .content-block {
     padding: 3rem 1rem;
   }
+  #who-we-are {
+    min-height: 30vh;  
+  }
+
 }
 /* ===== Belief Cards (About Us page) ===== */
 .core-beliefs {
