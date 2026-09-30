@@ -8,16 +8,7 @@ body{
     font-family: sans-serif;
     background-color: #000000;
     color: #f0f0f0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
 /* ===== Header Styles ===== */
 .site-header {
     display: flex;
@@ -73,10 +64,10 @@ main {
     padding: 2rem;
     border: 1px solid #f4c430;    /* the container outline from your sketch */
     margin: 1rem;                 /* small gap so it doesn't touch the header */
-   
+    max-width: 1200px;      /* controls how wide the hero box is */
+    margin: 1rem auto;      /* auto = centers it horizontally */
+  }
 /* ===== Hero Swipe Slideshow (CSS-only, no extra HTML needed) ===== */
-/* ===== Hero Swipe Slideshow (CSS-only, no extra HTML needed) ===== */
-
 /* HOW IT WORKS:
    1. .hero::before creates a very wide invisible strip (7x the hero's width).
    2. All the photos are placed side by side inside that strip.
@@ -415,7 +406,6 @@ main {
   margin-top: 3rem;
   flex-wrap: wrap;
 }
-
 .belief-card {
   flex: 1;
   min-width: 250px;
@@ -424,9 +414,13 @@ main {
   padding: 1.5rem;
   text-align: left;
 }
-
 .belief-card h3 {
   color: #f4c430;
   margin-bottom: 0.75rem;
   font-size: 1.1rem;
+}
+#who-we-are {
+  /* Add your CSS properties here */
+   min-height: 30vh;  
+   margin-top: 100px;
 }
