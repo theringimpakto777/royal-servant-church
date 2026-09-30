@@ -245,7 +245,7 @@ body{
   background-color: #ffffff;
   color: #111;
   padding: 3rem 2rem;
- flex: 1;   /* fills all remaining space inside <main> */
+  flex: 1;   /* fills all remaining space inside <main> */
 
 .light-section h2 {
   color: #000;
