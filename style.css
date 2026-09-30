@@ -400,6 +400,7 @@ body{
   }
   #who-we-are {
     min-height: 10vh;  
+    margin-top: 100px;
   }
 
 }
