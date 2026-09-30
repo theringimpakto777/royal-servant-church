@@ -245,6 +245,7 @@ body{
   background-color: #ffffff;
   color: #111;
   padding: 3rem 2rem;
+   min-height: 100vh;   /* ADD THIS - makes white section fill at least the full screen height */
 }
 
 .light-section h2 {
