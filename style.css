@@ -401,3 +401,25 @@ body{
     padding: 3rem 1rem;
   }
 }
+/* ===== Belief Cards (About Us page) ===== */
+.core-beliefs {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.belief-card {
+  flex: 1;
+  min-width: 250px;
+  border: 1px solid #f4c430;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.belief-card h3 {
+  color: #f4c430;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
